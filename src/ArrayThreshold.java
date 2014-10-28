@@ -5,12 +5,12 @@ import java.util.Scanner;
 
 public class ArrayThreshold {
   public static void main(String[] args) {
-    Scanner   input      = new Scanner(System.in);
+    Scanner   input    = new Scanner(System.in);
     final int ARR_SIZE = 100000;
     final int NUM_MAX  = 100;
     int[]     arr      = new int[ARR_SIZE];
     int[]     greaterArr;
-    int       thrValue;
+    int       threshold;
 
     // create a random array
     for (int i = 0; i < arr.length; i++) {
@@ -18,23 +18,34 @@ public class ArrayThreshold {
     }
 
     // pick a threshold value
-    System.out.print("Select a threshold value (1-" + (NUM_MAX - 1) + ": ");
-    thrValue = input.nextInt();
+    System.out.print("Select a threshold value (1-" + (NUM_MAX - 1) + "): ");
+    threshold = input.nextInt();
 
-    greaterArr = thresholdArray(arr, thrValue);
+    // put the values above the threshold into greaterArr
+    greaterArr = getGreaterArray(arr, threshold);
 
+    // print the contents of greaterArr
     System.out.print("{");
     for (int i = 0; i < greaterArr.length; i++) {
       System.out.print(greaterArr[i] + ",");
+      // line wrapping
       if (i % 20 == 0) {
         System.out.println();
       }
     }
-    System.out.print("}");
+    System.out.println("}");
+
+    System.out.println("Generated a new array of size " + greaterArr.length);
 
   }
 
-  public static int[] thresholdArray(int[] array, int threshold) {
+  /**
+   * Generates a thresholded array
+   * @param array     the array to select from
+   * @param threshold values above this will be selected
+   * @return          array with all values greater than the threshold
+   */
+  public static int[] getGreaterArray(int[] array, int threshold) {
     int   num = 0;    // number of values greater than the threshold
     int   j = 0;      // counter for the greater array
     int[] greater;    // all numbers greater than the threshold value
