@@ -2,6 +2,8 @@
  * Group 3
  * Thresholding
  * 10/28/2014
+ * @authors jwhnter1@memphis.edu gpence@memphis.edu dinakadhim@gmail.com
+ *          wsfaris@memphis.edu  msnccllr@memphis.edu
  */
 
 import java.util.Scanner;
