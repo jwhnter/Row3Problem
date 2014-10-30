@@ -11,9 +11,8 @@ import java.util.Scanner;
 public class ArrayThreshold {
   public static void main(String[] args) {
     Scanner   input   = new Scanner(System.in);
-    final int SIZE    = 100000;        // size of random array
     final int NUM_MAX = 100;           // max value of array elements
-    int[]     rArray  = new int[SIZE]; // random array
+    int[]     rArray  = new int[100]; // random array
     int[]     bigArray;                // only elements > threshold
     int       threshold;               // user-supplied threshold value
 
@@ -32,10 +31,14 @@ public class ArrayThreshold {
     // print the contents of bigArray
     System.out.print("{");
     for (int i = 0; i < bigArray.length; i++) {
-      System.out.print(bigArray[i] + ",");
       // line wrapping
-      if (i % 20 == 0) {
-        System.out.println();
+      if (i % 20 == 0 && i != 0) {
+        System.out.print("\n ");
+      }
+      System.out.print(bigArray[i]);
+      // last element should have no comma after it
+      if (i < bigArray.length - 1) {
+        System.out.print(",");
       }
     }
     System.out.println("}");
